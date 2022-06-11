@@ -1,5 +1,8 @@
 const express = require('express');
 const app = express();
+const bodyParser = require('body-parser')
+app.use(express.urlencoded({extended: true})) 
+
 
 app.listen(8080, function(){
   // 서버를 띄울 포트 번호, 띄운 후  실행할 코드
@@ -20,4 +23,19 @@ app.get('/pet', function(요청, 응답){
 
 app.get('/beauty', function(요청, 응답){
 	응답.send('뷰티 용품 쇼핑할 수 있는 y페이지입니다.')
+})
+
+app.get('/', function(요청, 응답){
+	응답.sendFile(__dirname + '/index.html') // sendFile(보낼 경로)
+})
+
+app.get('/write', function(요청, 응답){
+	응답.sendFile(__dirname + '/write.html') // sendFile(보낼 경로)
+})
+
+// 어떤 사람이 /add 경로로 POST 요청을 하면 뭘 해주세요
+
+app.post('/add', (요청, 응답) => {
+  응답.send('전송완료')
+  console.log(요청.body)
 })
