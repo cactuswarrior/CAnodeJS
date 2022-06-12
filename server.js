@@ -3,6 +3,11 @@ const app = express();
 const bodyParser = require('body-parser')
 app.use(express.urlencoded({extended: true})) 
 
+const MongoClient = require('mongodb').MongoClient;
+MongoClient.connect('mongodb+srv://sooseungCHUN:lR79Czkt5JXw6pA0@cluster0.svcqw.mongodb.net/?retryWrites=true&w=majority', function(에러, client){
+
+
+})
 
 app.listen(8080, function(){
   // 서버를 띄울 포트 번호, 띄운 후  실행할 코드
