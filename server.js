@@ -1,14 +1,19 @@
 const express = require('express');
 const app = express();
-const bodyParser = require('body-parser')
 app.use(express.urlencoded({extended: true})) 
+var mongoPassword = process.env.mongoPassword;
+
+const MongoClient = require('mongodb').MongoClient;
+MongoClient.connect('mongodb+srv://sooseungCHUN:lR79Czkt5JXw6pA0@cluster0.svcqw.mongodb.net/?retryWrites=true&w=majority', function(에러, client){
+  if(에러) return console.log(에러)
+  app.listen(8080, function(){
+    // 서버를 띄울 포트 번호, 띄운 후  실행할 코드
+    // 8080으로 들어오면 이걸 띄워줘
+     console.log('listening on 8080')
+
+}) })
 
 
-app.listen(8080, function(){
-  // 서버를 띄울 포트 번호, 띄운 후  실행할 코드
-  // 8080으로 들어오면 이걸 띄워줘
-   console.log('listening on 8080')
-}); 
 
 
 // ~~ 경로로 들어오면 이런 화면을 보여주고 ## 경로로 들어오면 저런 화면을 보여주세요
